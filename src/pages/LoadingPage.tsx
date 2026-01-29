@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import myLoadingGif from "../assets/background/loading.gif";
-import "../styles/loadingPage.css";
 import { Box, Typography } from "@mui/material";
 import { useEffect } from "react";
 
 const LoadingPage = () => {
+
   const navigate = useNavigate();
   useEffect(() => {
     const timer = setTimeout(() => {
