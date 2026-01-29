@@ -1,7 +1,7 @@
 
 import { createBrowserRouter } from "react-router-dom"; 
 import LoadingPage from "../pages/LoadingPage";
-import App from "../App";
+import LandingPage from "../pages/LandingPage";
 
 
 const router = createBrowserRouter([
@@ -10,8 +10,8 @@ const router = createBrowserRouter([
     element: <LoadingPage/>, 
   },
   {
-    path: "/game",
-    element: <App />, 
+    path: "/landing",
+    element: <LandingPage />, 
   },
 ]);
 

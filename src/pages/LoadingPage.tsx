@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import myLoadingGif from "../assets/loading.gif";
+import myLoadingGif from "../assets/background/loading.gif";
 import "../styles/loadingPage.css";
 import { Typography } from "@mui/material";
 import { useEffect } from "react";
@@ -8,8 +8,8 @@ const LoadingPage = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate("/game");
-    }, 3000);
+      navigate("/landing");
+    }, 2800);
 
     return () => clearTimeout(timer);
   }, [navigate]);

@@ -66,3 +66,17 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+@font-face {
+  font-family: 'CustomFontHerculanum'; 
+  
+  src: url('../public/fonts/herculanum.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CustomFontVergilius'; 
+  src: url('../public/fonts/vergilius-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
