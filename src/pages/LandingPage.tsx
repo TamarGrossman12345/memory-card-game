@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import landingPage from "../assets/background/landingPage.png";
 import NavLogo from "../components/NavLogo";
 
-
 const THEME = {
   colors: {
     primary: "#9d7f24",
@@ -77,7 +76,7 @@ const LandingPage = () => {
                 textShadow: "2px 2px 2px rgba(0,0,0,0.8)",
               }}
             >
-              The Dai Li Conspiracy
+              The Shadows of Ba Sing Se
             </Typography>
 
             <Typography
@@ -88,11 +87,15 @@ const LandingPage = () => {
                 lineHeight: 1.6,
               }}
             >
-              You have been kidnapped by the{" "}
-              <strong style={{ color: THEME.colors.primary }}>Dai Li</strong>{" "}
-              and they are trying to brainwash you. Only you know the
-              whereabouts of the Avatar's air bison, Appa, and without him the
-              world is in danger.
+              There is no war in Ba Sing Se...{" "}
+              <strong style={{ color: THEME.colors.primary }}>
+                or so they want you to believe... 
+              </strong>{" "}
+               You have been taken to the hidden chambers beneath Lake Laogai,
+              where the Dai Li are attempting to overwrite your mind. You are
+              the only one who knows where Appa is hidden, and the Dai Li will
+              stop at nothing to erase that memory. To break their trance, you
+              must complete this mental exercise.
             </Typography>
 
             <Typography
@@ -103,8 +106,10 @@ const LandingPage = () => {
                 fontStyle: "italic",
               }}
             >
-              You must regain control of your memory by doing this mind exercise
-              in order to help the Avatar.
+              They will shuffle your thoughts after every choice, trying to make
+              you stumble. Identify every figure once, and only once. If you
+              repeat a face, the brainwashing succeeds. Reclaim your memory.
+              Save Appa. Save the world."
             </Typography>
 
             <Button
@@ -136,7 +141,7 @@ const LandingPage = () => {
           </Stack>
         </Card>
       </Box>
-            <NavLogo/>
+      <NavLogo />
     </Box>
   );
 };
