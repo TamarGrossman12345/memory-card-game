@@ -1,6 +1,8 @@
 import { Box, Button, Card, Stack, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import landingPage from "../assets/background/landingPage.png";
+import NavLogo from "../components/NavLogo";
+
 
 const THEME = {
   colors: {
@@ -134,6 +136,7 @@ const LandingPage = () => {
           </Stack>
         </Card>
       </Box>
+            <NavLogo/>
     </Box>
   );
 };
