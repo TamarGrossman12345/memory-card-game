@@ -1,7 +1,9 @@
 import { Box, Button, Card, Stack, Typography } from "@mui/material";
 import landingPage from "../assets/background/landingPage.png";
 import "../styles/landingPage.css";
+import { useNavigate } from "react-router-dom";
 const LandingPage = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="background-container">
@@ -80,6 +82,7 @@ const LandingPage = () => {
               </Typography>
 
               <Button
+                onClick={() => navigate("/game")}
                 variant="contained"
                 sx={{
                   backgroundColor: "#3E2723",
@@ -91,13 +94,13 @@ const LandingPage = () => {
                   border: "2px solid #9d7f24",
                   padding: "12px 40px",
                   boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
-                  transition: "all 0.3s ease-in-out", 
+                  transition: "all 0.3s ease-in-out",
 
                   "&:hover": {
-                    backgroundColor: "#5D4037", 
+                    backgroundColor: "#5D4037",
                     color: "#FFF",
-                    transform: "scale(1.01)", 
-                    boxShadow: "0 2px 10px rgba(212, 175, 55, 0.4)", 
+                    transform: "scale(1.01)",
+                    boxShadow: "0 2px 10px rgba(212, 175, 55, 0.4)",
                     borderColor: "#FFF",
                   },
                 }}

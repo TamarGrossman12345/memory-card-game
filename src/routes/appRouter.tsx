@@ -2,6 +2,7 @@
 import { createBrowserRouter } from "react-router-dom"; 
 import LoadingPage from "../pages/LoadingPage";
 import LandingPage from "../pages/LandingPage";
+import GamePage from "../pages/GamePage";
 
 
 const router = createBrowserRouter([
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
   {
     path: "/landing",
     element: <LandingPage />, 
+  },
+    {
+    path: "/game",
+    element: <GamePage />, 
   },
 ]);
 
