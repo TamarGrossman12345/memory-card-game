@@ -25,8 +25,7 @@ const MemoryCard = ({ isFlipped, character, onClick }: CardProps) => {
     >
       <Tilt
         glareEnable={true}
-        glareMaxOpacity={0.4}
-        glareColor="#ffffff"
+        glareMaxOpacity={0.1}
         glarePosition="all"
         glareBorderRadius="12px"
         tiltMaxAngleX={5}
@@ -75,7 +74,7 @@ const MemoryCard = ({ isFlipped, character, onClick }: CardProps) => {
               boxShadow: 3,
               objectFit: "cover",
               border: "3px solid #D4AF37",
-              backgroundColor: "#fff",
+              
             }}
           />
         </Box>
