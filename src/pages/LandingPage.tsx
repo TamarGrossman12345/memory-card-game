@@ -3,19 +3,6 @@ import { useNavigate } from "react-router-dom";
 import landingPage from "../assets/background/landingPage.png";
 import NavLogo from "../components/NavLogo";
 
-const THEME = {
-  colors: {
-    primary: "#9d7f24",
-    bgDark: "rgba(62, 39, 35, 0.9)",
-    bgSolid: "#3E2723",
-    border: "#5D4037",
-    textWhite: "rgba(255, 255, 255, 0.9)",
-    textFaded: "rgba(255, 255, 255, 0.7)",
-  },
-  fonts: {
-    main: "'CustomFontHerculanum', 'MedievalSharp', cursive",
-  },
-};
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -58,8 +45,8 @@ const LandingPage = () => {
             p: { xs: 3 },
             minWidth: 300,
             maxWidth: 600,
-            backgroundColor: THEME.colors.bgDark,
-            borderColor: THEME.colors.border,
+            backgroundColor: "background.paper",
+            borderColor: "custom.border",
             boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
             borderRadius: "12px",
             textAlign: "center",
@@ -70,8 +57,8 @@ const LandingPage = () => {
             <Typography
               variant="h4"
               sx={{
-                fontFamily: THEME.fonts.main,
-                color: THEME.colors.primary,
+                fontFamily: "typography.fontFamily",
+                color: "primary.main",
                 fontWeight: "bold",
                 textShadow: "2px 2px 2px rgba(0,0,0,0.8)",
               }}
@@ -81,14 +68,14 @@ const LandingPage = () => {
 
             <Typography
               sx={{
-                color: THEME.colors.textWhite,
-                fontFamily: THEME.fonts.main,
+                color: "typography.allVariants.color",
+                fontFamily: "typography.fontFamily",
                 fontSize: "1.2rem",
                 lineHeight: 1.6,
               }}
             >
               There is no war in Ba Sing Se...{" "}
-              <strong style={{ color: THEME.colors.primary }}>
+              <strong style={{ color: "palette.primary.main" }}>
                 or so they want you to believe... 
               </strong>{" "}
                You have been taken to the hidden chambers beneath Lake Laogai,
@@ -100,8 +87,8 @@ const LandingPage = () => {
 
             <Typography
               sx={{
-                color: THEME.colors.textFaded,
-                fontFamily: THEME.fonts.main,
+                color: "custom.textFaded",
+                fontFamily: "typography.fontFamily",
                 fontSize: "1.1rem",
                 fontStyle: "italic",
               }}
@@ -116,23 +103,23 @@ const LandingPage = () => {
               onClick={() => navigate("/game")}
               variant="contained"
               sx={{
-                backgroundColor: THEME.colors.bgSolid,
-                color: THEME.colors.primary,
-                fontFamily: THEME.fonts.main,
+                backgroundColor: "background.default",
+                color:  "typography.allVariants.color",
+                fontFamily: "typography.fontFamily",
                 fontSize: "1.2rem",
                 fontWeight: "bold",
                 letterSpacing: "2px",
-                border: `2px solid ${THEME.colors.primary}`,
+                border: (theme) => `1px solid ${theme.palette.primary.main}`,
                 padding: "12px 40px",
                 boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
                 transition: "all 0.3s ease-in-out",
 
                 "&:hover": {
-                  backgroundColor: THEME.colors.border,
+                  backgroundColor: "custom.border",
                   color: "#FFF",
                   transform: "scale(1.02)",
                   borderColor: "#FFF",
-                  boxShadow: `0 0 15px ${THEME.colors.primary}`,
+                  boxShadow: (theme) => `0 0 15px ${theme.palette.primary.main}`,
                 },
               }}
             >

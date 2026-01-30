@@ -6,12 +6,14 @@ import MemoryCard from "../components/MemoryCard";
 
 import { useState } from "react";
 import getCharacters, { type Character } from "../utils/characters";
+import Scoreboard from "../components/ScoreBoard";
 
 const GamePage = () => {
   const navigate = useNavigate();
   const [isFlippedAll, setIsFlippedAll] = useState(true);
   const [cards, setCards] = useState(getCharacters());
-
+  const [score, setScore] = useState(0);
+  const totalCards = cards.length;
 
   const shuffleArray = (array: Character[]) => {
     const shuffled = [...array];
@@ -35,9 +37,11 @@ const GamePage = () => {
       if (char.id === id) {
         return { ...char, clicked: true };
       }
+
       return char;
     });
 
+    setScore(score + 1);
     setCards(updatedCards);
 
     const win = updatedCards.every((c) => c.clicked);
@@ -95,6 +99,18 @@ const GamePage = () => {
         }}
       >
         <NavLogo onClick={() => navigate("/landing")} />
+      </Box>
+
+      <Box
+        sx={{
+          position: "relative",
+          width: "100%",
+          left: 1000,
+          top: 30,
+          zIndex: 10,
+        }}
+      >
+        <Scoreboard currentScore={score} totalCards={totalCards}/>
       </Box>
 
       <Box
