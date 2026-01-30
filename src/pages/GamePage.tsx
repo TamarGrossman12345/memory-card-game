@@ -1,47 +1,40 @@
 import { Box } from "@mui/material";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+// Imports
 import gameBackground from "../assets/background/gameBackground.png";
 import NavLogo from "../components/NavLogo";
-import { useNavigate } from "react-router-dom";
 import MemoryCard from "../components/MemoryCard";
-
-import { useState } from "react";
-import getCharacters, { type Character } from "../utils/characters";
 import Scoreboard from "../components/ScoreBoard";
+import getCharacters, { type Character } from "../utils/characters";
+import { shuffleArray } from "../utils/game";
+
+const SHUFFLE_ANIMATION_TIME = 400;
+const FLIP_DELAY = 100;
 
 const GamePage = () => {
   const navigate = useNavigate();
-  const [isFlippedAll, setIsFlippedAll] = useState(true);
+
+  // State
+  const [isFlippedAll, setIsFlippedAll] = useState(true); // true = Show Character (בהנחה שזה הדיפולט שלך)
   const [cards, setCards] = useState(getCharacters());
   const [score, setScore] = useState(0);
-  const totalCards = cards.length;
 
-  const shuffleArray = (array: Character[]) => {
-    const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-  };
+  const totalCards = cards.length;
 
   const handleCardClick = (id: number) => {
     const clickedCard = cards.find((c) => c.id === id);
 
     if (clickedCard?.clicked) {
       alert("The brainwashing worked... Game Over!");
-      // resetGame();
       return;
     }
 
-    const updatedCards = cards.map((char) => {
-      if (char.id === id) {
-        return { ...char, clicked: true };
-      }
+    const updatedCards = cards.map((char) =>
+      char.id === id ? { ...char, clicked: true } : char,
+    );
 
-      return char;
-    });
-
-    setScore(score + 1);
+    setScore((prev) => prev + 1);
     setCards(updatedCards);
 
     const win = updatedCards.every((c) => c.clicked);
@@ -49,7 +42,6 @@ const GamePage = () => {
       alert("You remembered everyone! Appa is safe!");
       return;
     }
-
     triggerShuffleEffect(updatedCards);
   };
 
@@ -62,19 +54,19 @@ const GamePage = () => {
 
       setTimeout(() => {
         setIsFlippedAll(true);
-      }, 100);
-    }, 400);
+      }, FLIP_DELAY);
+    }, SHUFFLE_ANIMATION_TIME);
   };
 
   return (
     <Box
       sx={{
-        position: "relative",
         width: "100vw",
         height: "100vh",
-        overflow: "auto",
+        overflowY: "auto",
         display: "flex",
         flexDirection: "column",
+        position: "relative",
       }}
     >
       <Box
@@ -93,34 +85,28 @@ const GamePage = () => {
 
       <Box
         sx={{
-          position: "fixed",
-          width: "100%",
+          position: "sticky",
+          top: 0,
           zIndex: 10,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "10px 40px",
+          backgroundColor: "rgba(0,0,0,0.3)",
+          backdropFilter: "blur(5px)",
         }}
       >
         <NavLogo onClick={() => navigate("/landing")} />
+        <Scoreboard currentScore={score} totalCards={totalCards} />
       </Box>
 
       <Box
         sx={{
-          position: "relative",
-          width: "100%",
-          left: 1000,
-          top: 30,
-          zIndex: 10,
-        }}
-      >
-        <Scoreboard currentScore={score} totalCards={totalCards}/>
-      </Box>
-
-      <Box
-        sx={{
-          position: "relative",
-          top: 130,
           flexGrow: 1,
           display: "flex",
-          alignItems: "center",
           justifyContent: "center",
+          paddingTop: "40px",
+          paddingBottom: "40px",
           zIndex: 1,
         }}
       >
@@ -129,9 +115,8 @@ const GamePage = () => {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center",
-            alignContent: "center",
-            gap: 2,
-            maxWidth: "1100px",
+            gap: 3,
+            maxWidth: "1200px",
             width: "100%",
           }}
         >
