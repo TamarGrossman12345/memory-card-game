@@ -3,13 +3,26 @@ import gameBackground from "../assets/background/gameBackground.png";
 import NavLogo from "../components/NavLogo";
 import { useNavigate } from "react-router-dom";
 import MemoryCard from "../components/MemoryCard";
-import zukoImg from "../../constant/characters/zuko.jpg";
-import back from "../../constant/characters/card-back.webp";
+
+import { useState } from "react";
+import getCharacters from "../utils/characters";
 
 const GamePage = () => {
-
   const navigate = useNavigate();
+  const [isFlippedAll, setIsFlippedAll] = useState(true);
+  const [cards, setCards] = useState(getCharacters());
 
+  const handleCardClick = () => {
+    triggerShuffleEffect();
+  };
+
+  const triggerShuffleEffect = () => {
+    setIsFlippedAll(false);
+    setTimeout(() => {
+      setIsFlippedAll(true);
+    }, 800);
+        
+  };
   return (
     <Box
       sx={{
@@ -45,7 +58,6 @@ const GamePage = () => {
         <NavLogo onClick={() => navigate("/landing")} />
       </Box>
 
-    
       <Box
         sx={{
           position: "relative",
@@ -53,10 +65,9 @@ const GamePage = () => {
           left: 0,
           flexGrow: 1,
           display: "flex",
-          alignItems: "center", 
-          justifyContent: "center", 
+          alignItems: "center",
+          justifyContent: "center",
           zIndex: 1,
-         
         }}
       >
         <Box
@@ -64,71 +75,20 @@ const GamePage = () => {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center",
-            alignContent: "center", 
+            alignContent: "center",
             gap: 2,
             maxWidth: "1100px",
             width: "100%",
           }}
         >
-          {/* כאן תריץ את ה-Map שלך */}
-          {/* כאן יבוא ה-Map שלך */}
-          {/* {cards.map((card) => (
-      <MemoryCard 
-        key={card.id} 
-        isFlipped={isFlipping} 
-        frontImage={card.img} 
-        backImage={back} 
-        onClick={() => handleCardClick(card.id)} 
-      />
-    ))} */}
-          <MemoryCard
-            isFlipped={true}
-            frontImage={zukoImg}
-            backImage={back}
-            onClick={() => {}}
-          />
-          <MemoryCard
-            isFlipped={false}
-            frontImage={zukoImg}
-            backImage={back}
-            onClick={() => {}}
-          />
-          <MemoryCard
-            isFlipped={false}
-            frontImage={zukoImg}
-            backImage={back}
-            onClick={() => {}}
-          />
-          <MemoryCard
-            isFlipped={false}
-            frontImage={zukoImg}
-            backImage={back}
-            onClick={() => {}}
-          />
-          <MemoryCard
-            isFlipped={false}
-            frontImage={zukoImg}
-            backImage={back}
-            onClick={() => {}}
-          />
-          <MemoryCard
-            isFlipped={false}
-            frontImage={zukoImg}
-            backImage={back}
-            onClick={() => {}}
-          />
-          <MemoryCard
-            isFlipped={false}
-            frontImage={zukoImg}
-            backImage={back}
-            onClick={() => {}}
-          />
-          <MemoryCard
-            isFlipped={false}
-            frontImage={zukoImg}
-            backImage={back}
-            onClick={() => {}}
-          />
+          {cards.map((character) => (
+            <MemoryCard
+              key={character.id}
+              character={character}
+              isFlipped={isFlippedAll}
+              onClick={handleCardClick}
+            />
+          ))}
         </Box>
       </Box>
     </Box>

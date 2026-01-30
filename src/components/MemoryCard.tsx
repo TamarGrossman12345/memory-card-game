@@ -1,14 +1,18 @@
 import { Box } from "@mui/material";
+import Tilt from "react-parallax-tilt";
+import type { Character } from "../utils/characters";
+import BACKGROUND from "../../constant/charactersImg/card-back.webp";
 
 interface CardProps {
   isFlipped: boolean;
-  frontImage: string; 
-  backImage: string;  
+  character: Character;
   onClick: () => void;
-  disabled?: boolean; // כדאי להוסיף כדי למנוע לחיצה על כרטיס שכבר פתוח
+  disabled?: boolean;
 }
 
-const MemoryCard = ({ isFlipped, frontImage, backImage, onClick, disabled }: CardProps) => {
+const MemoryCard = ({ isFlipped, character, backImage, onClick, disabled }: CardProps) => {
+
+
   return (
     <Box
       onClick={!disabled ? onClick : undefined}
@@ -17,55 +21,66 @@ const MemoryCard = ({ isFlipped, frontImage, backImage, onClick, disabled }: Car
         height: 280,
         perspective: "1000px",
         cursor: disabled ? "default" : "pointer",
-        userSelect: "none", // מונע בחירת תמונה בכחול בלחיצות מהירות
+        userSelect: "none",
       }}
     >
-      <Box
-        sx={{
-          position: "relative",
-          width: "100%",
-          height: "100%",
-          transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)", // אנימציה חלקה יותר
-          transformStyle: "preserve-3d",
-          transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
-        }}
+      <Tilt
+        glareEnable={true}
+        glareMaxOpacity={0.4}
+        glareColor="#ffffff"
+        glarePosition="all"
+        glareBorderRadius="12px"
+        tiltMaxAngleX={5}
+        tiltMaxAngleY={5}
+  
       >
-        {/* צד אחורי - מה שרואים כשהכרטיס סגור */}
         <Box
-          component="img"
-          src={backImage}
-          alt="Card Back"
           sx={{
-            position: "absolute",
+            position: "relative",
             width: "100%",
-            height: "100%",
-            backfaceVisibility: "hidden",
-            borderRadius: "12px", // קצת יותר מעוגל נראה מודרני
-            boxShadow: 3, // הוספת צל לעומק
-            objectFit: "cover",
-            border: "3px solid #D4AF37",
+            height: "280px",
+            transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
+            transformStyle: "preserve-3d",
+            transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
           }}
-        />
+        >
+          <Box
+            component="img"
+            src={BACKGROUND}
+            alt="Card Back"
+            sx={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              backfaceVisibility: "hidden",
+              borderRadius: "12px",
+              boxShadow: 3,
+              objectFit: "cover",
+              border: "3px solid #D4AF37",
+    
+              overflow: "hidden", 
+            }}
+          />
 
-        {/* צד קדמי - הדמות שנחשפת */}
-        <Box
-          component="img"
-          src={frontImage}
-          alt="Card Front"
-          sx={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            backfaceVisibility: "hidden",
-            transform: "rotateY(180deg)",
-            borderRadius: "12px",
-            boxShadow: 3,
-            objectFit: "cover",
-            border: "3px solid #D4AF37",
-            backgroundColor: "#fff",
-          }}
-        />
-      </Box>
+          <Box
+            component="img"
+            src={character.src}
+            alt={character.name}
+            sx={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              backfaceVisibility: "hidden",
+              transform: "rotateY(180deg)", 
+              borderRadius: "12px",
+              boxShadow: 3,
+              objectFit: "cover",
+              border: "3px solid #D4AF37",
+              backgroundColor: "#fff",
+            }}
+          />
+        </Box>
+      </Tilt>
     </Box>
   );
 };
