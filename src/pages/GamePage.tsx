@@ -5,24 +5,63 @@ import { useNavigate } from "react-router-dom";
 import MemoryCard from "../components/MemoryCard";
 
 import { useState } from "react";
-import getCharacters from "../utils/characters";
+import getCharacters, { type Character } from "../utils/characters";
 
 const GamePage = () => {
   const navigate = useNavigate();
   const [isFlippedAll, setIsFlippedAll] = useState(true);
   const [cards, setCards] = useState(getCharacters());
 
-  const handleCardClick = () => {
-    triggerShuffleEffect();
+
+  const shuffleArray = (array: Character[]) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
   };
 
-  const triggerShuffleEffect = () => {
-    setIsFlippedAll(false);
-    setTimeout(() => {
-      setIsFlippedAll(true);
-    }, 800);
-        
+  const handleCardClick = (id: number) => {
+    const clickedCard = cards.find((c) => c.id === id);
+
+    if (clickedCard?.clicked) {
+      alert("The brainwashing worked... Game Over!");
+      // resetGame();
+      return;
+    }
+
+    const updatedCards = cards.map((char) => {
+      if (char.id === id) {
+        return { ...char, clicked: true };
+      }
+      return char;
+    });
+
+    setCards(updatedCards);
+
+    const win = updatedCards.every((c) => c.clicked);
+    if (win) {
+      alert("You remembered everyone! Appa is safe!");
+      return;
+    }
+
+    triggerShuffleEffect(updatedCards);
   };
+
+  const triggerShuffleEffect = (currentCards: Character[]) => {
+    setIsFlippedAll(false);
+
+    setTimeout(() => {
+      const shuffled = shuffleArray(currentCards);
+      setCards(shuffled);
+
+      setTimeout(() => {
+        setIsFlippedAll(true);
+      }, 100);
+    }, 400);
+  };
+
   return (
     <Box
       sx={{
@@ -62,7 +101,6 @@ const GamePage = () => {
         sx={{
           position: "relative",
           top: 130,
-          left: 0,
           flexGrow: 1,
           display: "flex",
           alignItems: "center",
@@ -86,7 +124,8 @@ const GamePage = () => {
               key={character.id}
               character={character}
               isFlipped={isFlippedAll}
-              onClick={handleCardClick}
+              clicked={character.clicked}
+              onClick={() => handleCardClick(character.id)}
             />
           ))}
         </Box>

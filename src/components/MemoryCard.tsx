@@ -7,20 +7,19 @@ interface CardProps {
   isFlipped: boolean;
   character: Character;
   onClick: () => void;
-  disabled?: boolean;
+  clicked: boolean;
 }
 
-const MemoryCard = ({ isFlipped, character, backImage, onClick, disabled }: CardProps) => {
+const MemoryCard = ({ isFlipped, character, onClick }: CardProps) => {
 
 
   return (
     <Box
-      onClick={!disabled ? onClick : undefined}
+      onClick={onClick}
       sx={{
         width: 200,
         height: 280,
         perspective: "1000px",
-        cursor: disabled ? "default" : "pointer",
         userSelect: "none",
       }}
     >
