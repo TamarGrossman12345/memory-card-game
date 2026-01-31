@@ -8,3 +8,6 @@ export const shuffleArray = (array: Character[]) => {
   }
   return shuffled;
 };
+
+
+export const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));

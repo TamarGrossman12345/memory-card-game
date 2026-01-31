@@ -1,13 +1,13 @@
 import { Box } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// Imports
+
 import gameBackground from "../assets/background/gameBackground.png";
 import NavLogo from "../components/NavLogo";
 import MemoryCard from "../components/MemoryCard";
 import Scoreboard from "../components/ScoreBoard";
 import getCharacters, { type Character } from "../utils/characters";
-import { shuffleArray } from "../utils/game";
+import { shuffleArray, delay } from "../utils/game";
 
 const SHUFFLE_ANIMATION_TIME = 400;
 const FLIP_DELAY = 100;
@@ -45,17 +45,16 @@ const GamePage = () => {
     triggerShuffleEffect(updatedCards);
   };
 
-  const triggerShuffleEffect = (currentCards: Character[]) => {
+  const triggerShuffleEffect = async (currentCards: Character[]) => {
     setIsFlippedAll(false);
+    await delay(SHUFFLE_ANIMATION_TIME);
 
-    setTimeout(() => {
-      const shuffled = shuffleArray(currentCards);
-      setCards(shuffled);
+    const shuffled = shuffleArray(currentCards);
+    setCards(shuffled);
 
-      setTimeout(() => {
-        setIsFlippedAll(true);
-      }, FLIP_DELAY);
-    }, SHUFFLE_ANIMATION_TIME);
+    await delay(FLIP_DELAY);
+
+    setIsFlippedAll(true);
   };
 
   return (
