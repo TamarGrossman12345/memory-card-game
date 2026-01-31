@@ -26,7 +26,6 @@ const GamePage = () => {
     const clickedCard = cards.find((c) => c.id === id);
 
     if (clickedCard?.clicked) {
-      // alert("The brainwashing worked... Game Over!");
       navigate("/losing");
       return;
     }
@@ -40,7 +39,7 @@ const GamePage = () => {
 
     const win = updatedCards.every((c) => c.clicked);
     if (win) {
-      alert("You remembered everyone! Appa is safe!");
+      navigate("/winning");
       return;
     }
     triggerShuffleEffect(updatedCards);

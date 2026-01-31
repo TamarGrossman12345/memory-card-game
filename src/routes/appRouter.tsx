@@ -1,29 +1,31 @@
-
-import { createBrowserRouter } from "react-router-dom"; 
+import { createBrowserRouter } from "react-router-dom";
 import LoadingPage from "../pages/LoadingPage";
 import LandingPage from "../pages/LandingPage";
 import GamePage from "../pages/GamePage";
 import LosingPage from "../pages/LosingPage";
-
+import WinningPage from "../pages/WinningPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <LoadingPage/>, 
+    element: <LoadingPage />,
   },
   {
     path: "/landing",
-    element: <LandingPage />, 
+    element: <LandingPage />,
   },
-    {
+  {
     path: "/game",
-    element: <GamePage />, 
+    element: <GamePage />,
   },
-      {
+  {
     path: "/losing",
-    element: <LosingPage />, 
+    element: <LosingPage />,
+  },
+  { 
+    path: "/winning",
+    element: <WinningPage />,
   },
 ]);
-
 
 export default router;

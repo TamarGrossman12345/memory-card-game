@@ -1,10 +1,10 @@
 import { Box, Typography } from "@mui/material";
-import losingPage from "../assets/background/losingPage.jpg";
-import GameCarDialog from "../components/GameCardDialog";
-import NavLogo from "../components/NavLogo";
 import { useNavigate } from "react-router-dom";
+import winningBackground from "../assets/background/winningBackground.jpg";
+import NavLogo from "../components/NavLogo";
+import GameCarDialog from "../components/GameCardDialog";
 
-const LosingPage = () => {
+const WinningPage = () => {
   const navigate = useNavigate();
 
   return (
@@ -18,7 +18,7 @@ const LosingPage = () => {
     >
       <Box
         component="img"
-        src={losingPage}
+        src={winningBackground}
         sx={{
           position: "absolute",
           top: 0,
@@ -34,7 +34,7 @@ const LosingPage = () => {
         <NavLogo onClick={() => navigate("/landing")} />
       </Box>
 
-      <GameCarDialog title="You Lost - Game Over">
+      <GameCarDialog title="You Won!">
         <Typography
           sx={{
             color: "custom.textFaded",
@@ -43,12 +43,13 @@ const LosingPage = () => {
             fontStyle: "italic",
           }}
         >
-          The Dai Li agents have successfully scrambled your memories. Appa
-          remains hidden, and the secret of the war is safe.
+          You’ve successfully reclaimed your memories, and the path to Appa is
+          finally clear. Ba Sing Se will know the truth, and the Earth Kingdom
+          will rise against the shadows that sought to bind it.
         </Typography>
       </GameCarDialog>
     </Box>
   );
 };
 
-export default LosingPage;
+export default WinningPage;
