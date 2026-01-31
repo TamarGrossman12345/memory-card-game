@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import losingPage from "../assets/background/losingPage.jpg";
 import GameCarDialog from "../components/GameCardDialog";
 import NavLogo from "../components/NavLogo";
@@ -30,13 +30,23 @@ const LosingPage = () => {
         }}
       />
 
-      
       <Box sx={{ position: "relative", zIndex: 10 }}>
         <NavLogo onClick={() => navigate("/landing")} />
       </Box>
 
-
-      <GameCarDialog title="Game Over" />
+      <GameCarDialog title="You Lost">
+        <Typography
+          sx={{
+            color: "custom.textFaded",
+            fontFamily: "typography.fontFamily",
+            fontSize: "1.1rem",
+            fontStyle: "italic",
+          }}
+        >
+          The Dai Li agents have successfully scrambled your memories. Appa
+          remains hidden, and the secret of the war is safe.
+        </Typography>
+      </GameCarDialog>
     </Box>
   );
 };
