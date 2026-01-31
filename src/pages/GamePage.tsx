@@ -26,7 +26,8 @@ const GamePage = () => {
     const clickedCard = cards.find((c) => c.id === id);
 
     if (clickedCard?.clicked) {
-      alert("The brainwashing worked... Game Over!");
+      // alert("The brainwashing worked... Game Over!");
+      navigate("/losing");
       return;
     }
 

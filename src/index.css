@@ -69,14 +69,14 @@ button:focus-visible {
 @font-face {
   font-family: 'CustomFontHerculanum'; 
   
-  src: url('../public/fonts/herculanum.ttf') format('truetype');
+  src: url('../constant/fonts/herculanum.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'CustomFontVergilius'; 
-  src: url('../public/fonts/vergilius-regular.ttf') format('truetype');
+  src: url('../constant/fonts/vergilius-regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
