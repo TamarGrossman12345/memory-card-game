@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import LOGO  from "../../constant/logos/avatar-the-last-airbender-logo.png"
 
 interface NavLogoProps {
   onClick?: () => void;
@@ -10,7 +11,7 @@ const NavLogo = ({ onClick }: NavLogoProps) => {
       component="img"
       role="button"
       onClick={onClick}
-      src="/avatar-the-last-airbender-logo.png"
+      src={LOGO}
       sx={{
         position: "absolute",
         top: 30,
