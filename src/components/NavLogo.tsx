@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import LOGO  from "../../constant/logos/avatar-the-last-airbender-logo.png"
+import LOGO from "../../constant/logos/avatar-the-last-airbender-logo.png";
 
 interface NavLogoProps {
   onClick?: () => void;
