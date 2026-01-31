@@ -1,12 +1,12 @@
-import AANG from "../../constant/charactersImg/aang.png";
-import ZUKO from "../../constant/charactersImg/zuko.jpg";
-import AZULA from "../../constant/charactersImg/azula.jpg";
-import IROH from "../../constant/charactersImg/iroh.png";
-import KATARA from "../../constant/charactersImg/katara.jpg";
-import MOMO from "../../constant/charactersImg/momo.png";
-import PAKKU from "../../constant/charactersImg/pakku.png";
-import SUKI from "../../constant/charactersImg/suki.jpg";
-import TOPH from "../../constant/charactersImg/toph.png";
+import AANG from "../assets/charactersImg/aang.png";
+import ZUKO from "../assets/charactersImg/zuko.jpg";
+import AZULA from "../assets/charactersImg/azula.jpg";
+import IROH from "../assets/charactersImg/iroh.png";
+import KATARA from "../assets/charactersImg/katara.jpg";
+import MOMO from "../assets/charactersImg/momo.png";
+import PAKKU from "../assets/charactersImg/pakku.png";
+import SUKI from "../assets/charactersImg/suki.jpg";
+import TOPH from "../assets/charactersImg/toph.png";
 
 export interface Character {
   id: number;

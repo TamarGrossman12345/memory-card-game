@@ -15,8 +15,8 @@ const FLIP_DELAY = 100;
 const GamePage = () => {
   const navigate = useNavigate();
 
-  // State
-  const [isFlippedAll, setIsFlippedAll] = useState(true); // true = Show Character (בהנחה שזה הדיפולט שלך)
+  
+  const [isFlippedAll, setIsFlippedAll] = useState(true); 
   const [cards, setCards] = useState(getCharacters());
   const [score, setScore] = useState(0);
 
