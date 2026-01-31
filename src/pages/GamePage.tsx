@@ -30,8 +30,8 @@ const GamePage = () => {
       return;
     }
 
-    const updatedCards = cards.map((char) =>
-      char.id === id ? { ...char, clicked: true } : char,
+    const updatedCards = cards.map((character) =>
+      character.id === id ? { ...character, clicked: true } : character,
     );
 
     setScore((prev) => prev + 1);
@@ -124,7 +124,6 @@ const GamePage = () => {
               key={character.id}
               character={character}
               isFlipped={isFlippedAll}
-              clicked={character.clicked}
               onClick={() => handleCardClick(character.id)}
             />
           ))}

@@ -1,13 +1,12 @@
 import { Box } from "@mui/material";
 import Tilt from "react-parallax-tilt";
 import type { Character } from "../utils/characters";
-import BACKGROUND from "../../constant/charactersImg/card-back.webp";
+import BACKGROUND from "../assets/charactersImg/card-back.webp";
 
 interface CardProps {
   isFlipped: boolean;
   character: Character;
   onClick: () => void;
-  clicked: boolean;
 }
 
 const MemoryCard = ({ isFlipped, character, onClick }: CardProps) => {
