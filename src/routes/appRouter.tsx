@@ -26,6 +26,9 @@ const router = createBrowserRouter([
     path: "/winning",
     element: <WinningPage />,
   },
-]);
+  
+], {
+  basename: "/memory-card-game",
+});
 
 export default router;
